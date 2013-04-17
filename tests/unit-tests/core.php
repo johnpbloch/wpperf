@@ -11,11 +11,18 @@ class Core_Tests extends \PHPUnit_Framework_TestCase {
 	public function setUp() {
 		\WP_Mock::setUp();
 		Handler::cleanup();
-		$return_function = function( $text ) {
-			return $text;
-		};
-		Handler::register_handler( '__', $return_function );
-		Handler::register_handler( '_x', $return_function );
+		Handler::register_handler( '__', function ( $text, $textdomain ) {
+			if ( $textdomain !== 'wpperf' ) {
+				return $text;
+			}
+			return "T~($text)~T";
+		} );
+		Handler::register_handler( '_x', function ( $text, $context, $textdomain ) {
+			if ( $textdomain !== 'wpperf' ) {
+				return $text;
+			}
+			return "T~($text):($context)~T";
+		} );
 	}
 
 	public function tearDown() {
@@ -35,17 +42,17 @@ class Core_Tests extends \PHPUnit_Framework_TestCase {
 			array(
 				'public'            => true,
 				'labels'            => array(
-					'name'               => 'Tests',
-					'singular_name'      => 'Test',
-					'add_new'            => 'Add New',
-					'add_new_item'       => 'Add New Test',
-					'edit_item'          => 'Edit Test',
-					'new_item'           => 'New Test',
-					'view_item'          => 'View Test',
-					'search_items'       => 'Search Tests',
-					'not_found'          => 'No tests found.',
-					'not_found_in_trash' => 'No tests found in Trash.',
-					'all_items'          => 'All Tests',
+					'name'               => 'T~(Tests):(Post type general name)~T',
+					'singular_name'      => 'T~(Test):(Post type singular name)~T',
+					'add_new'            => 'T~(Add New):(test)~T',
+					'add_new_item'       => 'T~(Add New Test)~T',
+					'edit_item'          => 'T~(Edit Test)~T',
+					'new_item'           => 'T~(New Test)~T',
+					'view_item'          => 'T~(View Test)~T',
+					'search_items'       => 'T~(Search Tests)~T',
+					'not_found'          => 'T~(No tests found.)~T',
+					'not_found_in_trash' => 'T~(No tests found in Trash.)~T',
+					'all_items'          => 'T~(All Tests)~T',
 				),
 				'show_in_nav_menus' => false,
 				'map_meta_caps'     => true,
