@@ -11,9 +11,11 @@ class Core_Tests extends \PHPUnit_Framework_TestCase {
 	public function setUp() {
 		\WP_Mock::setUp();
 		Handler::cleanup();
-		Handler::register_handler( '__', function ( $text ) {
+		$return_function = function( $text ) {
 			return $text;
-		} );
+		};
+		Handler::register_handler( '__', $return_function );
+		Handler::register_handler( '_x', $return_function );
 	}
 
 	public function tearDown() {
