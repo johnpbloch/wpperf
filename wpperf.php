@@ -19,7 +19,7 @@ if ( version_compare( PHP_VERSION, '5.3', '<' ) ) {
 	add_settings_error(
 		'',
 		'wpperf-disabled',
-		'WPPerf deactivated! PHP 5.3 is required'
+		__( 'WPPerf deactivated! PHP 5.3 is required', 'wpperf' )
 	);
 	add_action( 'all_admin_notices', 'settings_errors' );
 	return;
