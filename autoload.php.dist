@@ -4,3 +4,5 @@ require_once __DIR__ . '/tests/wp_mock/WP_Mock/Loader.php';
 
 $loader = new \WP_Mock\Loader( 'WP_Mock', __DIR__ . '/tests/wp_mock' );
 $loader->register();
+
+const WPPERF_DIR = __DIR__;
