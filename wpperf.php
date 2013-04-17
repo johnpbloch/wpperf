@@ -5,6 +5,12 @@
  * Version: 1.0-alpha
  */
 
+load_plugin_textdomain(
+	'wpperf',
+	false,
+	basename( dirname( __FILE__ ) ) . '/languages'
+);
+
 if ( version_compare( PHP_VERSION, '5.3', '<' ) ) {
 	$dir = WP_PLUGIN_DIR . '/' . basename( dirname( __FILE__ ) ) . '/';
 	require_once ABSPATH . 'wp-admin/includes/plugin.php';
