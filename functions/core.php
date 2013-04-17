@@ -8,7 +8,7 @@ namespace WPPerf;
  * @uses add_action( 'init', '\WPPerf\init' )
  */
 function setup() {
-
+	add_action( 'init', n( 'init' ) );
 }
 
 /**
