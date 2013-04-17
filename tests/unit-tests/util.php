@@ -4,8 +4,6 @@ namespace WPPerf;
 
 use WP_Mock\Handler;
 
-require_once WPPERF_DIR . '/functions/utilities.php';
-
 class Utilities_Tests extends \PHPUnit_Framework_TestCase {
 
 	public function setUp() {

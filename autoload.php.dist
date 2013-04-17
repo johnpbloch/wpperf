@@ -6,3 +6,5 @@ $loader = new \WP_Mock\Loader( 'WP_Mock', __DIR__ . '/tests/wp_mock' );
 $loader->register();
 
 const WPPERF_DIR = __DIR__;
+
+require_once WPPERF_DIR . '/functions/utilities.php';
