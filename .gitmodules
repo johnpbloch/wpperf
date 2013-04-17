@@ -1,0 +1,3 @@
+[submodule "tests/wp_mock"]
+	path = tests/wp_mock
+	url = git://github.com/ericmann/wp_mock.git
