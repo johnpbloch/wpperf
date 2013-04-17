@@ -10,5 +10,6 @@ namespace WPPerf;
  * @return string The namespaced callback
  */
 function n( $function ) {
-
+	$function = ltrim( $function, '\\' );
+	return '\WPPerf\\' . $function;
 }
