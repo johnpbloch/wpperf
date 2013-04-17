@@ -38,16 +38,16 @@ class Bootstrap_Tests extends \PHPUnit_Framework_TestCase {
 			'wpperf/languages'
 		);
 		Handler::register_handler(
-			'register_plugin_textdomain',
+			'load_plugin_textdomain',
 			function () use ( &$actual ) {
 				$actual = func_get_args();
 			}
 		);
-		require_once WPPERF_DIR . '/bootstrap.php';
+		require_once WPPERF_DIR . '/wpperf.php';
 		$this->assertEquals(
 			$expected,
 			$actual,
-			'register_plugin_textdomain was not invoked with the expected arguments!'
+			'load_plugin_textdomain was not invoked with the expected arguments!'
 		);
 	}
 
