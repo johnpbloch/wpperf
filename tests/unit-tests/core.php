@@ -20,6 +20,7 @@ class Core_Tests extends \PHPUnit_Framework_TestCase {
 
 	public function test_setup() {
 		\WP_Mock::expectActionAdded( 'init', '\WPPerf\init' );
+		\WPPerf\setup();
 	}
 
 	public function test_init() {
